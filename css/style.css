@@ -1,0 +1,24 @@
+/* General */
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style */
+body{
+  font-family: sans-serif;
+  background: rgba(143, 0, 255, 0.4);
+}
+h1{
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+h2{
+  text-align: center;
+  color: #fff;
+}
