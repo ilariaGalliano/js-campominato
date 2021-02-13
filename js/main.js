@@ -3,7 +3,7 @@
 *************************/
 
 
-// BONUS: (da fare solo se funziona tutto il resto)
+// BONUS:
 // all'inizio il software richiede anche una difficoltà all'utente
 //che cambia il range di numeri casuali:
 // con difficoltà 0 => tra 1 e 100
@@ -18,16 +18,19 @@ numberMax = '';
 switch (level) {
   case 0:
     numberBombs = 16;
+    numberMin = 1;
     numberMax = 100;
     level = 'Facile';
     break;
   case 1:
     numberBombs = 16;
+    numberMin = 1;
     numberMax = 80;
     level = 'Medio';
     break;
   case 2:
     numberBombs = 16;
+    numberMin = 1;
     numberMax = 50;
     level = 'Difficile';
 }
@@ -39,11 +42,11 @@ var user = []; // per inserire dati utente
 var size = 16;
 
 // // Uso la funzione personalizzata
-var numBomb = getRandom(1, 100);
+var numBomb = getRandom( numberMin, numberMax);
 
 // I numeri non possono essere duplicati
 while (randNumber.length < size) {
-  var numBomb = getRandom(1, 100);
+  var numBomb = getRandom( numberMin, numberMax);
 
   if (! randNumber.includes(numBomb)) {
     randNumber.push(numBomb);
@@ -52,17 +55,17 @@ while (randNumber.length < size) {
 console.log(randNumber);
 
 // possibilità utente
-var userNumber = 84;
+var userNumber = numberMax - numberBombs;
 
 
 // In seguito deve chiedere all'utente (100 - 16) volte
 // di inserire un numero alla volta, sempre compreso tra 1 e 100.
 
 for (var i = 0; i < userNumber; i++) {
-  var insertNumber = parseInt( prompt('inserisci un numero da 1 a 100'));
+  var insertNumber = parseInt( prompt('inserisci un numero tra: ' + numberMin + ' e ' + numberMax));
 
-  while (user.includes(insertNumber) || isNaN(insertNumber) ) {
-      insertNumber = parseInt( prompt('inserisci un altro numero'));
+  while (user.includes(insertNumber) || isNaN(insertNumber) || insertNumber < numberMin || insertNumber > numberMax ) {
+      insertNumber = parseInt( prompt('inserisci un numero valido da tra: ' + numberMin + ' e ' + numberMax));
   }
   user.push(insertNumber);
 
